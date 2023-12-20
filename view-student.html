@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <title>GUB - Dashboard</title>
+
+        <link
+            href="vendor/fontawesome-free/css/all.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+        />
+
+        <link href="css/main.css" rel="stylesheet" />
+        <link
+            href="vendor/datatables/dataTables.bootstrap4.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/toastr.css" />
+
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="js/toastr.min.js"></script>
+    </head>
+
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <ul
+                class="navbar-nav bg-primary sidebar sidebar-dark accordion"
+                id="accordionSidebar"
+            >
+                <!-- Sidebar - Brand -->
+                <a
+                    class="sidebar-brand d-flex align-items-center justify-content-center bg-white"
+                    href="index.html"
+                >
+                    <div class="sidebar-brand-text mx-3">
+                        <img src="img/gub.png" alt="" width="140" />
+                    </div>
+                </a>
+
+                <!-- Nav Item - Dashboard -->
+                <li class="pt-4 nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a
+                    >
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider" />
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a
+                        class="nav-link collapsed"
+                        href="#"
+                        data-toggle="collapse"
+                        data-target="#collapseTwo"
+                        aria-expanded="true"
+                        aria-controls="collapseTwo"
+                    >
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Manage Teacher</span>
+                    </a>
+                    <div
+                        id="collapseTwo"
+                        class="collapse"
+                        aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar"
+                    >
+                        <div class="collapse-inner">
+                            <a class="collapse-item" href="view-teacher.html"
+                                >Teacher</a
+                            >
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link collapsed"
+                        href="#"
+                        data-toggle="collapse"
+                        data-target="#collapseThree"
+                        aria-expanded="true"
+                        aria-controls="collapseTwo"
+                    >
+                        <i class="fas fa-book"></i>
+                        <span>Manage Class</span>
+                    </a>
+                    <div
+                        id="collapseThree"
+                        class="collapse"
+                        aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar"
+                    >
+                        <div class="collapse-inner">
+                            <a class="collapse-item" href="view-batch.html"
+                                >Batch</a
+                            >
+
+                            <a class="collapse-item" href="view-class.html"
+                                >Class</a
+                            >
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link collapsed"
+                        href="#"
+                        data-toggle="collapse"
+                        data-target="#collapseFour"
+                        aria-expanded="true"
+                        aria-controls="collapseTwo"
+                    >
+                        <i class="fas fa-users"></i>
+                        <span>Manage Student</span>
+                    </a>
+                    <div
+                        id="collapseFour"
+                        class="collapse"
+                        aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar"
+                    >
+                        <div class="collapse-inner">
+                            <a class="collapse-item" href="view-student.html"
+                                >View Student</a
+                            >
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link collapsed"
+                        href="#"
+                        data-toggle="collapse"
+                        data-target="#collapseFive"
+                        aria-expanded="true"
+                        aria-controls="collapseTwo"
+                    >
+                        <i class="fas fa-edit"></i>
+                        <span>Manage Attendance</span>
+                    </a>
+                    <div
+                        id="collapseFive"
+                        class="collapse"
+                        aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar"
+                    >
+                        <div class="collapse-inner">
+                            <a class="collapse-item" href="take-attandence.html"
+                                >Take Attendance</a
+                            >
+
+                            <a class="collapse-item" href="view-present.html"
+                                >View Present</a
+                            >
+
+                            <a class="collapse-item" href="all-present.html"
+                                >All Present</a
+                            >
+                        </div>
+                    </div>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block" />
+            </ul>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Main Content -->
+                <div id="content">
+                    <!-- Topbar -->
+                    <nav
+                        class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                    >
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button
+                            id="sidebarToggleTop"
+                            class="btn btn-link d-md-none rounded-circle mr-3"
+                        >
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="searchDropdown"
+                                    role="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div
+                                    class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown"
+                                >
+                                    <form
+                                        class="form-inline mr-auto w-100 navbar-search"
+                                    >
+                                        <div class="input-group">
+                                            <input
+                                                type="text"
+                                                class="form-control bg-light border-0 small"
+                                                placeholder="Search for..."
+                                                aria-label="Search"
+                                                aria-describedby="basic-addon2"
+                                            />
+                                            <div class="input-group-append">
+                                                <button
+                                                    class="btn btn-primary"
+                                                    type="button"
+                                                >
+                                                    <i
+                                                        class="fas fa-search fa-sm"
+                                                    ></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+                            <!-- Nav Item - Alerts -->
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="userDropdown"
+                                    role="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <span
+                                        class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                    >
+                                        Mark Neel
+                                    </span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="32"
+                                        height="32"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.964 0a9 9 0 1 0-11.963 0m11.962 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0a3 3 0 0 1 6 0"
+                                        />
+                                    </svg>
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div
+                                    class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown"
+                                >
+                                    <a
+                                        class="dropdown-item"
+                                        href="profile.html"
+                                    >
+                                        <i
+                                            class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"
+                                        ></i>
+                                        Profile
+                                    </a>
+                                    <a
+                                        class="dropdown-item"
+                                        href="setting.html"
+                                    >
+                                        <i
+                                            class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"
+                                        ></i>
+                                        Settings
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        data-toggle="modal"
+                                        data-target="#logoutModal"
+                                    >
+                                        <i
+                                            class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+                                        ></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- End of Topbar -->
+
+                    <div class="container-fluid">
+                        <!-- Page Heading -->
+                        <h1 class="h3 mb-4 text-gray-800">Manage Student</h1>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6
+                                            class="m-0 font-weight-bold text-primary"
+                                        >
+                                            Add Student
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="name"
+                                                    >Student Name</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    name="name"
+                                                    class="form-control"
+                                                    placeholder="Student Name"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name"
+                                                    >Father's Name</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    name="father"
+                                                    class="form-control"
+                                                    placeholder="Father's Name"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name"
+                                                    >Mother's Name</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    name="mother"
+                                                    class="form-control"
+                                                    placeholder="Mother's Name"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="class"
+                                                    >Select Batch</label
+                                                >
+                                                <select
+                                                    name="batch_id"
+                                                    class="form-control"
+                                                    id="class"
+                                                    required
+                                                >
+                                                    <option value="211">
+                                                        211
+                                                    </option>
+                                                    <option value="212">
+                                                        212
+                                                    </option>
+                                                    <option value="213">
+                                                        213
+                                                    </option>
+                                                    <option value="2018">
+                                                        2018
+                                                    </option>
+                                                    <option value="2022">
+                                                        2022
+                                                    </option>
+                                                    <option value="2023">
+                                                        2023
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="batch"
+                                                    >Select Class</label
+                                                >
+                                                <select
+                                                    name="class_id"
+                                                    class="form-control"
+                                                    id="batch"
+                                                >
+                                                    <option value="7">
+                                                        Software Engineering
+                                                    </option>
+                                                    <option value="8">
+                                                        Web Programming Lab
+                                                    </option>
+                                                    <option value="9">
+                                                        Artificial Intelligence
+                                                        Lab
+                                                    </option>
+                                                    <option value="10">
+                                                        Integrated Project
+                                                        Design 2
+                                                    </option>
+                                                    <option value="11">
+                                                        Web Programmin
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name"
+                                                    >Phone Number</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    name="phone"
+                                                    class="form-control"
+                                                    placeholder="Phone Number"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <input
+                                                    type="submit"
+                                                    name="submit"
+                                                    class="btn btn-success"
+                                                />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <!-- DataTales Example -->
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6
+                                            class="m-0 font-weight-bold text-primary"
+                                        >
+                                            View Student
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table
+                                                class="table table-bordered"
+                                                id="dataTable"
+                                                width="100%"
+                                                cellspacing="0"
+                                            >
+                                                <thead>
+                                                    <tr>
+                                                        <th>Student id</th>
+                                                        <th>Name</th>
+                                                        <th>Father</th>
+                                                        <th>Mother</th>
+                                                        <th>Batch</th>
+                                                        <th>Class</th>
+                                                        <th>Phone</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Student id</th>
+                                                        <th>Name</th>
+                                                        <th>Father</th>
+                                                        <th>Mother</th>
+                                                        <th>Batch</th>
+                                                        <th>Class</th>
+                                                        <th>Phone</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>20180701</td>
+                                                        <td>Rana Miya</td>
+                                                        <td>jolmot</td>
+                                                        <td>kannis</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Software Engineering
+                                                        </td>
+                                                        <td>07425252522</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180702</td>
+                                                        <td>kasem</td>
+                                                        <td>billal</td>
+                                                        <td>Monora</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Software Engineering
+                                                        </td>
+                                                        <td>01866936562</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180703</td>
+                                                        <td>Rajib</td>
+                                                        <td>Bala</td>
+                                                        <td>Mukta</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Software Engineering
+                                                        </td>
+                                                        <td>07425252522</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180704</td>
+                                                        <td>Tanim</td>
+                                                        <td>Kholil</td>
+                                                        <td>Unkhown</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Software Engineering
+                                                        </td>
+                                                        <td>01921324091</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180705</td>
+                                                        <td>Robil</td>
+                                                        <td>Unkhown</td>
+                                                        <td>Unkhown</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Software Engineering
+                                                        </td>
+                                                        <td>07425252567</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180801</td>
+                                                        <td>Hujaifa</td>
+                                                        <td>Unkhown</td>
+                                                        <td>Unkhown</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Web Programming Lab
+                                                        </td>
+                                                        <td>07425252567</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180802</td>
+                                                        <td>Redoy</td>
+                                                        <td>Unkhown</td>
+                                                        <td>Unkhown</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Web Programming Lab
+                                                        </td>
+                                                        <td>07425252522</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180803</td>
+                                                        <td>Shobuj</td>
+                                                        <td>Sokot</td>
+                                                        <td>Rojina</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Web Programming Lab
+                                                        </td>
+                                                        <td>01624128156</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180804</td>
+                                                        <td>Said</td>
+                                                        <td>Bablu</td>
+                                                        <td>Aliya</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Web Programming Lab
+                                                        </td>
+                                                        <td>01921324091</td>
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20180805</td>
+                                                        <td>Juwel</td>
+                                                        <td>kuddos</td>
+                                                        <td>Unkhown</td>
+                                                        <td>2018</td>
+                                                        <td>
+                                                            Web Programming Lab
+                                                        </td>
+                                                        <td>01624128156</td>
+                                                        
+                                                        <td>
+                                                            <a
+                                                                href=""
+                                                                class="btn btn-sm btn-primary my-1"
+                                                                >Update</a
+                                                            >
+                                                            <a
+                                                                onclick="javascript: return confirm('Are You Sure You Want To Delete This Data?');"
+                                                                href=""
+                                                                class="btn btn-sm btn-danger my-1"
+                                                                >Delete</a
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Green University 2023</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div
+            class="modal fade"
+            id="logoutModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Ready to Leave?
+                        </h5>
+                        <button
+                            class="close"
+                            type="button"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Select "Logout" below if you are ready to end your
+                        current session.
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            class="btn btn-secondary"
+                            type="button"
+                            data-dismiss="modal"
+                        >
+                            Cancel
+                        </button>
+                        <a class="btn btn-primary" href="logout.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <script src="js/custom.js"></script>
+
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+        <script src="js/datatables-demo.js"></script>
+    </body>
+</html>
